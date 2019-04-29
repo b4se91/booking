@@ -10,4 +10,16 @@ declare global {
       [elem: string]: any
     }
   }
+
+  interface Array<T> {
+    groupBy (p: string): Array<T>
+    orderBy (p: string, t: string): Array<T>
+    remove  (p: string, v: any): Array<T>
+    keep    (p: string, v: any): Array<T>
+    get     (p: string, v: any): Array<T>
+  }
+
+  interface Window {
+    [elem: string]: any,
+  }
 }

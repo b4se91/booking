@@ -1,0 +1,48 @@
+#ui--button {
+  text-transform: uppercase;
+  padding: 2px 6px;
+
+  color: var(--text-color);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-600);
+
+  border-radius: var(--border-radius-small);
+  border-bottom: solid 3px hsla(0, 0%, 100%, 0.3);
+
+  &.ui--color {
+
+    &-default {
+      color: var(--dark-color);
+      background-color: var(--lint-color);
+    }
+
+    &-primary {
+      background-color: var(--primary-color);
+    }
+
+    &-info {
+      background-color: var(--info-color);
+    }
+
+    &-success {
+      background-color: var(--success-color);
+    }
+
+    &-warning {
+      background-color: var(--warning-color);
+    }
+
+    &-error {
+      background-color: var(--error-color);
+    }
+
+  }
+
+  &:hover {
+    opacity: .9;
+  }
+
+  &:active {
+    opacity: .8;
+  }
+}

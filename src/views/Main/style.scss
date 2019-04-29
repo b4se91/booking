@@ -1,0 +1,134 @@
+@import "../../assets/style/lib/mixins.scss";
+
+#app-main {
+  position: relative;
+  padding: 20px 15px;
+  display: grid;
+  grid-column-gap: 30px;
+  grid-template-columns: 3fr var(--screen-xs) 3fr;
+
+  &-center {
+    display: grid;
+    grid-row-gap: 20px;
+    grid-auto-flow: row;
+  }
+
+  &-left {
+    text-align: right;
+    .container { margin: 0 0 0 auto }
+  }
+  .container {
+    position: sticky;
+    top: 70px;
+    display: grid;
+    grid-row-gap: 40px;
+    max-width: 360px;
+  }
+
+  .app-main-container {
+    padding: 15px;
+    border-radius: 10px;
+    border: solid 1px var(--border-color);
+    background-color: var(--text-color);
+
+    .ui--container {
+      display: grid;
+      grid-gap: 10px 20px;
+      margin-top: 10px;
+
+      &.ui--col-x1 {
+        grid-template-columns: 1fr;
+      }
+      
+      &.ui--col-x2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+
+  &-menu {
+    display: grid;
+    grid-row-gap: 5px;
+    grid-auto-flow: row;
+    justify-content: end;
+
+    .ui--link-li {
+      display: grid;
+      grid-template-columns: 25px 1fr;
+
+      padding: 6px 10px;
+      min-width: 200px;
+      text-align: left;
+
+      background-color: var(--text-color);
+      border-radius: var(--border-radius-base);
+      border: solid 1px var(--border-color);
+
+      i {
+        font-size: 18px;
+        align-self: center;
+      }
+
+      span {
+        @include ellipsis();
+      }
+
+      &:hover {
+        background-color: var(--base-color);
+      }
+    }
+  }
+
+  &-latest {
+    display: grid;
+    grid-row-gap: 15px;
+    
+    .ui--test {
+      i {
+        width: 20px;
+      }
+
+      span {
+        text-transform: capitalize;
+      }
+
+      strong {
+        text-transform: capitalize;
+        color: var(--primary-color);
+      }
+
+      h5 {
+        font-size: var(--font-size-x10);
+      }
+    }
+  }
+}
+
+#ui--main {
+  &-transport {
+
+    .ui- {
+      &-block {
+        padding: 10px 0 0;
+        border-bottom: solid 1px var(--deep-color);
+        &:last-child { border: unset }
+      }
+
+      &-head {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        padding: 0 0 10px;
+
+        span {
+          font-weight: var(--font-weight-600);
+        }
+      }
+
+      &-body {
+        padding: 0 0 15px;
+
+        .ui--container:first-child { margin: 0 }
+      }
+    }
+  }
+}

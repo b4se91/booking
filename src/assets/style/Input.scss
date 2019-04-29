@@ -1,0 +1,48 @@
+#ui--input {
+
+  label {
+    text-transform: capitalize;
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-normal);
+
+    i { margin-right: 4px }
+    &.required {
+      &::after {
+        content: ' *';
+        color: var(--error-color);
+      }
+    }
+  }
+
+  .ui--input-default {
+    margin-top: 2px;
+    padding: 6px;
+    font-size: var(--font-size-small);
+    color: var(--dark-color);
+    background-color: var(--deep-color);
+
+    &:focus {
+      box-shadow: 0 0 0 1px var(--deep-force-color);
+    }
+  }
+
+  .ui--input-textarea {
+    display: block;
+    width: 100%;
+    min-height: 30px;
+    max-height: 60px;
+    margin-top: 2px;
+    padding: 6px;
+    font-size: var(--font-size-small);
+    
+    resize: vertical;
+    border: unset;
+
+    color: var(--dark-color);
+    background-color: var(--deep-color);
+
+    &:focus {
+      box-shadow: 0 0 0 1px var(--deep-force-color);
+    }
+  }
+}

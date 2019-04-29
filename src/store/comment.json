@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "label": "New booking (Direct)",
+    "value": "${#cs[bcompany]} [${cs[bpname]}] to make a booking...\r\n\r\nAppointment Date: ${cs[apptdate]}\r\nAppointment Time: ${#cs[appttime]}\r\nLocation: ${#cs[branch]}\r\nCustomers: ${cs[ttpp]} pax\r\nSpa Treatment: [Treatment]\r\nPick Up: ${.li-pu-time} at OR(${.li-pu-place},${#cs[hotel]})\r\nTake Back: OR(${.li-tb-place},${#cs[hotel]})\r\n\r\nSpecial Request: ${cs[special_req]}",
+    "category": "Booking Info",
+    "activate": true,
+    "timestamp": "2018-05-17 03:36:15"
+  },
+  {
+    "id": 2,
+    "label": "TC Info",
+    "value": "Take care by ${#cs[rc]}, Take back to OR(${.li-tb-place},${#cs[hotel]})",
+    "category": "At Spa",
+    "activate": true,
+    "timestamp": "2018-05-17 09:18:30"
+  },
+  {
+    "id": 3,
+    "label": "Paid",
+    "value": "Paid by [Payment] rec by [ReceptionName] on (TIME)",
+    "category": "Finish",
+    "activate": true,
+    "timestamp": "2018-05-17 09:31:55"
+  },
+  {
+    "id": 4,
+    "label": "Report",
+    "value": "[What_happened]\r\n\r\n<b>Who&lt;\/b&gt;: ${cs[name]}\r\n\r\n<b>What Happen&lt;\/b&gt;: [What_customer_complained_with_us]\r\n\r\n<b>Action&lt;\/b&gt;: [What_reception_do_for_make_customer_feel_better]\r\n\r\n<b>Final&lt;\/b&gt;: [How_customer_feel_when_customer_leave]\r\n\r\n<b>Follow up&lt;\/b&gt;: [After_customer_left_what_reception_done]",
+    "category": "Complain",
+    "activate": true,
+    "timestamp": "2018-05-17 09:31:55"
+  },
+  {
+    "id": 5,
+    "label": "Start Time",
+    "value": "Start on ${#cs[appttime]}",
+    "category": "At Spa",
+    "activate": true,
+    "timestamp": "2018-05-17 09:18:30"
+  },
+  {
+    "id": 7,
+    "label": "At Lobby Time",
+    "value": "[Room] at lobby on (TIME)",
+    "category": "Finish",
+    "activate": true,
+    "timestamp": "2018-05-17 09:31:55"
+  },
+  {
+    "id": 10,
+    "label": "Reservation Cross Check",
+    "value": "Cross Check by Reservation",
+    "category": "Booking Info",
+    "activate": true,
+    "timestamp": "2018-05-17 03:36:15"
+  },
+  {
+    "id": 11,
+    "label": "New booking (Agent)",
+    "value": "Receive email from ${#cs[bcompany]} - VC No ${cs[voucher_no]}\r\n\r\nAppointment Date: ${cs[apptdate]}\r\nAppointment Time: ${#cs[appttime]}\r\nLocation: ${#cs[branch]}\r\nCustomers: ${cs[ttpp]} pax\r\nSpa Treatment: [Treatment]\r\nPick Up: ${.li-pu-time} at OR(${.li-pu-place},${#cs[hotel]})\r\nTake Back: OR(${.li-tb-place},${#cs[hotel]})\r\n\r\nSpecial Request: ${cs[special_req]}",
+    "category": "Booking Info",
+    "activate": true,
+    "timestamp": "2018-05-17 03:36:15"
+  },
+  {
+    "id": 12,
+    "label": "Received Money",
+    "value": "RECEIVED MONEY Total [AMOUNT] baht on (DATE), Receptionist please select \u201cPre-Paid Booking\u201d on method of payment.",
+    "category": "Accounting",
+    "activate": true,
+    "timestamp": "2018-06-28 09:44:01"
+  },
+  {
+    "id": 13,
+    "label": "Commission",
+    "value": "Booking ID: ${.header &gt; b.style1}\nWho: ${#cs[bcompany]}\nTotal Cust: ${cs[ttpp]}\nMale: [Male]\nFemale: [Female]\nWhen: ${#cs[appttime]}\nWhere: ${#cs[branch]}\nRemark: [Remark]",
+    "category": "At Spa",
+    "activate": true,
+    "timestamp": "2018-05-17 09:18:30"
+  }
+]

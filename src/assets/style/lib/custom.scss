@@ -1,0 +1,75 @@
+:root {
+  // Prefix
+  --image                  : "../../assets/image";
+
+  // Color
+  --primary-color          : #1854CC;
+  --info-color             : #2D8CF0;
+  --success-color          : #28B463;
+  --warning-color          : #FF9900;
+  --gold-color             : #FFE500;
+  --error-color            : #FF4D4D;
+  --link-color             : #FF5722;
+  --rate-star-color        : #F5A623;
+  --dark-color             : #111418;
+  --light-color            : #FBFCFC;
+  --deep-color             : #EEF0F1;
+  --deep-force-color       : #D0D7DC;
+  --border-color           : #E2E6E9;
+  --dark-text-color        : #566573;
+
+  // Base
+  // --font-family            : "Avenir", Helvetica, Arial, sans-serif;
+  --font-family            : -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --code-family            : Consolas, Menlo, Courier, monospace;
+  --base-color             : #F9F9FA;
+  --text-color             : #FFF;
+  --font-size-strong       : 20px;
+  --font-size-base         : 14px;
+  --font-size-small        : 12px;
+  --font-size-x24          : 24px;
+  --font-size-x18          : 18px;
+  --font-size-x16          : 16px;
+  --font-size-x11          : 11px;
+  --font-size-x10          : 10px;
+  --font-weight-light      : 300;
+  --font-weight-normal     : 400;
+  --font-weight-600        : 600;
+  --font-weight-bold       : 700;
+  --font-weight-bolder     : 900;
+  --border-radius-small    : 2px;
+  --border-radius-base     : 4px;
+  --border-radius-strong   : 8px;
+
+  // Media queries breakpoints
+  // Extra small screen / phone
+  --screen-xs              : 480px;
+  --screen-xs-min          : var(--screen-xs);
+  --screen-xs-max          : (var(--screen-xs-min) - 1);
+
+  // Small screen / tablet
+  --screen-sm              : 768px;
+  --screen-sm-min          : var(--screen-sm);
+  --screen-sm-max          : (var(--screen-sm-min) - 1);
+
+  // Medium screen / desktop
+  --screen-md              : 992px;
+  --screen-md-min          : var(--screen-md);
+  --screen-md-max          : (var(--screen-md-min) - 1);
+
+  // Large screen / wide desktop
+  --screen-lg              : 1200px;
+  --screen-lg-min          : var(--screen-lg);
+  --screen-lg-max          : (var(--screen-lg-min) - 1);
+
+  // Animation
+  --animation-time         : 200ms;
+  --transition-time        : 100ms;
+  --cubic-bezier           : "cubic-bezier(0.77, 0, 0.175, 1)";
+
+  // Breakpoints
+  --phone                  : "only screen and (max-width: 460px)";
+  --tablet                 : "only screen and (max-width: 800px)";
+  --desktop                : "only screen and (max-width: 1024px)";
+  --desktop-xl             : "only screen and (max-width: 1280px)";
+}

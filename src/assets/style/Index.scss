@@ -1,0 +1,26 @@
+/**
+ =========================================================
+
+ * This website is produced by TAP Technology Company Limited.
+ * e-mail: info@tap10.com
+ * website: https://tap10.com
+
+ =========================================================
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+**/
+
+// Core Styles
+@import "lib/custom";
+@import "lib/mixins";
+@import "lib/reset";
+
+// Components Styles
+@import "Loader";
+@import "Button";
+@import "Input";
+@import "Select";
+@import "Number";
+@import "DatePicker";
+@import "components/Header";
+@import "components/Files";
+@import "components/Comment";

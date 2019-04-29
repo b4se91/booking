@@ -1,0 +1,27 @@
+#ui--date-picker {
+  position: relative;
+
+  & > #DateTimePicker {
+    margin: 2px 0 0;
+  }
+
+  input.field-input {
+    padding: 6px;
+    height: 28px;
+    min-height: unset;
+
+    border-radius: 0;
+    border: unset !important;
+
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-normal);
+
+    color: var(--dark-color);
+    background-color: var(--deep-color);
+  }
+
+  div.datepicker {
+    border-radius: 0;
+    box-shadow: 0 10px 20px var(--border-color);
+  }
+}

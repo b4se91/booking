@@ -1,0 +1,76 @@
+#app-comment {
+  &-msg {
+    display: grid;
+    grid-row-gap: 10px;
+    padding-right: 1px;
+    overflow-y: auto;
+    max-height: 60vh;
+
+    .ui--comment-msg {
+      padding: 12px;
+      border-radius: var(--border-radius-strong);
+      background-color: var(--text-color);
+      border: solid 1px var(--border-color);
+
+      p {
+        font-size: 12px;
+      }
+    }
+
+    .ui--comment-owner {
+      text-align: right;
+      margin-top: 10px;
+      font-size: var(--font-size-x10);
+
+      &-name {
+        text-transform: capitalize;
+        padding: 1px 8px;
+        color: var(--text-color);
+        background-color: var(--dark-text-color);
+      }
+
+      &-date {
+        padding: 1px 5px;
+        color: var(--link-color);
+        background-color: var(--deep-color);
+      }
+    }
+  }
+
+  &-input {
+    margin: 15px 0 0;
+    background-color: var(--text-color);
+    border: solid 1px var(--border-color);
+    border-radius: var(--border-radius-strong);
+
+    .ui--comment-area {
+      width: 100%;
+      min-height: 100px;
+      max-height: 200px;
+      outline: unset;
+      border: unset;
+      padding: 15px;
+      resize: vertical;
+      background-color: transparent;
+    }
+
+    .ui--comment-actions {
+      display: grid;
+      grid-column-gap: 5px;
+      grid-template-columns: 60% repeat(2, auto);
+      padding: 0 5px 5px;
+    }
+
+    .ui--comment-select {
+      font-size: var(--font-size-small);
+      border: unset;
+      color: var(--dark-color);
+      border: solid 1px var(--border-color);
+      border-radius: var(--border-radius-small);
+    }
+  }
+
+  // ::-webkit-scrollbar { width: 6px }
+  // ::-webkit-scrollbar-thumb { background-color: hsl(220, 10%, 85%) }
+  // ::-webkit-scrollbar-track { background-color: hsl(220, 10%, 95%) }
+}
