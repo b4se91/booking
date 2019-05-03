@@ -140,6 +140,29 @@ function hls (input: string, search: string): string {
     return search ? hls : input
 }
 
+/**
+ * Events loading component.
+ * 
+ * @param {VueInstance} Vue
+ * @param {Boolean} input
+ */
+function load (Vue: any, input: boolean = true): void {
+  const vuex: any = Vue.$store
+  vuex.dispatch('APP.DEMO/L04D', input)
+}
+
+/**
+ * Manage VModal constructor.
+ * 
+ * @param {VueInstance} Vue
+ * @param {Function} comp
+ * @param {Boolean} open
+ */
+function modal (Vue: any, comp: any = null, open: boolean = true): void {
+  const vuex: any = Vue.$store
+  vuex.dispatch('APP.DEMO/M0D4L', { comp, open })
+}
+
 export {
   hls,
   price,
@@ -148,5 +171,7 @@ export {
   truncate,
   upperCase,
   lowerCase,
-  capitalize
+  capitalize,
+  load as Load,
+  modal as Modal
 }

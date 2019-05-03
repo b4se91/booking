@@ -1,5 +1,5 @@
 <template>
-  <div id="ui--main-transport" class="app-main-container">
+  <div class="ui--container ui--comp-transport">
     <div id="ui--h2-title">Transportation</div>
 
     <!-- PICK UP -->
@@ -15,7 +15,7 @@
       </div>
 
       <div class="ui--body" v-if="pick.use">
-        <div class="ui--container ui--col-x1">
+        <div class="ui--col ui--col-x1">
           <Select
             name="ui--model-pick-driver"
             label="Driver"
@@ -26,7 +26,7 @@
           />
         </div>
 
-        <div class="ui--container ui--col-x2">
+        <div class="ui--col ui--col-x2">
           <Input
             type="text"
             name="ui--model-pick-place"
@@ -42,7 +42,7 @@
           />
         </div>
 
-        <div class="ui--container ui--col-x2" v-if="pick.driver">
+        <div class="ui--col ui--col-x2" v-if="pick.driver">
           <Input
             type="text"
             name="ui--model-pick-taxi-price"
@@ -56,7 +56,7 @@
           />
         </div>
 
-        <div class="ui--container ui--col-x1" v-if="pick.driver">
+        <div class="ui--col ui--col-x1" v-if="pick.driver">
           <Select
             name="ui--model-pick-taxi-reason"
             label="Taxi Reason"
@@ -81,7 +81,7 @@
       </div>
 
       <div class="ui--body" v-if="take.use">
-        <div class="ui--container ui--col-x1">
+        <div class="ui--col ui--col-x1">
           <Select
             name="ui--model-take-driver"
             label="Driver"
@@ -92,7 +92,7 @@
           />
         </div>
 
-        <div class="ui--container ui--col-x2">
+        <div class="ui--col ui--col-x2">
           <Input
             type="text"
             name="ui--model-take-place"
@@ -108,7 +108,7 @@
           />
         </div>
 
-        <div class="ui--container ui--col-x2" v-if="take.driver">
+        <div class="ui--col ui--col-x2" v-if="take.driver">
           <Input
             type="text"
             name="ui--model-take-taxi-price"
@@ -122,7 +122,7 @@
           />
         </div>
 
-        <div class="ui--container ui--col-x1" v-if="take.driver">
+        <div class="ui--col ui--col-x1" v-if="take.driver">
           <Select
             name="ui--model-take-taxi-reason"
             label="Taxi Reason"

@@ -1,4 +1,4 @@
-#ui--select {
+.ui--select {
   position: relative;
   
   &-label {
@@ -22,10 +22,12 @@
     line-height: 28px;
     font-size: var(--font-size-small);
     color: var(--dark-color);
-    background-color: var(--deep-color);
+    background-color: var(--base-color);
+    border-radius: var(--border-radius-small);
 
     span {
-      margin: 0 6px;
+      padding: 0 6px;
+      font-weight: var(--font-weight-600);
       @include ellipsis();
     }
 
@@ -38,8 +40,9 @@
       }
     }
 
-    &:hover {
-      box-shadow: 0 0 0 1px var(--deep-force-color);
+    &:hover,
+    &.open {
+      box-shadow: 0 0 0 1px var(--border-force-color);
     }
   }
 
@@ -55,52 +58,51 @@
     overflow-y: auto;
 
     background-color: var(--text-color);
-    border: solid 1px var(--deep-color);
     box-shadow: 0 10px 20px var(--border-color);
 
     &.to-top {
       top: unset;
       bottom: 28px;
     }
+  }
 
-    .ui--select-search {
-      position: relative;
-      background-color: var(--info-color);
-      border-bottom: solid 1px var(--light-color);
+  &-dropdown-li {
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: var(--font-size-small);
 
-      input {
-        padding: 10px;
-        color: var(--light-color);
-        background-color: transparent;
-        font-size: var(--font-size-small);
-
-        &::placeholder { color: #90CAF9 }
-      }
-
-      i {
-        position: absolute;
-        top: 0;
-        right: 14px;
-        line-height: 36px;
-        color: var(--light-color);
-        pointer-events: none;
-      }
+    &.focus {
+      color: var(--light-color);
+      background-color: var(--primary-color) !important;
     }
 
-    .ui--select-li {
-      cursor: pointer;
-      padding: 5px 10px;
+    &:hover {
+      color: var(--light-color);
+      background-color: var(--info-color);
+    }
+  }
+
+  &-dropdown-search {
+    position: relative;
+    background-color: var(--info-color);
+    border-bottom: solid 1px var(--border-force-color);
+
+    input {
+      padding: 10px;
+      color: var(--light-color);
+      background-color: transparent;
       font-size: var(--font-size-small);
 
-      &.focus {
-        color: var(--light-color);
-        background-color: var(--primary-color) !important;
-      }
+      &::placeholder { color: #90CAF9 }
+    }
 
-      &:hover {
-        color: var(--light-color);
-        background-color: var(--info-color);
-      }
+    i {
+      position: absolute;
+      top: 0;
+      right: 14px;
+      line-height: 36px;
+      color: var(--light-color);
+      pointer-events: none;
     }
   }
 }

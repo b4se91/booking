@@ -1,35 +1,30 @@
 <template>
-  <div id="ui--select">
+  <div class="ui--select">
 
-    <label id="ui--select-label" :class="{ required }">
+    <label :class="['ui--select-label', { required }]">
       <span>{{ label }}</span>
     </label>
 
-    <div id="ui--select-placeholder">
-      <span :id="name" @click="openDropdown">{{ placeholder }}</span>
+    <div :class="['ui--select-placeholder', { open }]">
+      <span :id="name" @click="openDropdown">
+        {{ placeholder }}
+      </span>
 
       <i class="ion-ios-close" v-if="currentValue" @click="clear"></i>
-
       <i class="ion-ios-arrow-down" v-else  @click="openDropdown"></i>
     </div>
 
-    <div id="ui--select-dropdown-list" :class="{ 'to-top': toTop }" v-if="open">
+    <div :class="['ui--select-dropdown-list', { 'to-top': toTop }]" v-if="open">
 
-      <div class="ui--select-search" v-if="search">
+      <div class="ui--select-dropdown-search" v-if="search">
         <input type="text" placeholder="Search" v-model="query">
         <i class="ion-ios-search"></i>
       </div>
 
-      <div
-        :class="[
-          'ui--select-li',
-          {
-            focus: focus(elm)
-          }
-        ]"
+      <div :class="['ui--select-dropdown-li', { focus: focus(elm) }]"
         @click="selected(elm)"
-        v-for="(elm, key) in dropdown" :key="key"
-        v-html="h(elm[field.label])">
+        v-html="h(elm[field.label])"
+        v-for="(elm, key) in dropdown" :key="key">
       </div>
 
     </div>
@@ -44,14 +39,14 @@ import { hls, lowerCase } from '@/units'
 @Component
 export default class Select extends Vue {
   @Prop(Number) value!: number
+  @Prop(String) readonly label!: string
   @Prop(Boolean) readonly search!: boolean
   @Prop(Boolean) readonly disabled!: boolean
   @Prop(Boolean) readonly required!: boolean
-  @Prop(String) readonly label!: string
+  @Prop(Boolean) readonly toTop!: boolean
   @Prop({ type: String, required: true }) readonly name!: string
   @Prop({ type: Array, required: true }) readonly options!: any
   @Prop({ type: Object, required: true }) readonly field!: any
-  @Prop(Boolean) readonly toTop!: boolean
 
   // __DATA
   private currentValue: any = this.value || 0

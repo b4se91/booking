@@ -1,6 +1,7 @@
-#ui--input {
-
-  label {
+.ui--input {
+  position: relative;
+  
+  &-label {
     text-transform: capitalize;
     font-size: var(--font-size-small);
     font-weight: var(--font-weight-normal);
@@ -14,19 +15,22 @@
     }
   }
 
-  .ui--input-default {
-    margin-top: 2px;
+  &-default {
+    margin: 2px 0 0;
     padding: 6px;
     font-size: var(--font-size-small);
+    font-weight: var(--font-weight-600);
     color: var(--dark-color);
-    background-color: var(--deep-color);
+    background-color: var(--base-color);
+    border-radius: var(--border-radius-small);
 
-    &:focus {
-      box-shadow: 0 0 0 1px var(--deep-force-color);
+    &:focus,
+    &:hover {
+      box-shadow: 0 0 0 1px var(--border-force-color);
     }
   }
 
-  .ui--input-textarea {
+  &-textarea {
     display: block;
     width: 100%;
     min-height: 30px;
@@ -34,15 +38,18 @@
     margin-top: 2px;
     padding: 6px;
     font-size: var(--font-size-small);
+    font-weight: var(--font-weight-600);
     
     resize: vertical;
     border: unset;
 
     color: var(--dark-color);
-    background-color: var(--deep-color);
+    background-color: var(--base-color);
+    border-radius: var(--border-radius-small);
 
-    &:focus {
-      box-shadow: 0 0 0 1px var(--deep-force-color);
+    &:focus,
+    &:hover {
+      box-shadow: 0 0 0 1px var(--border-force-color);
     }
   }
 }

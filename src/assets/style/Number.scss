@@ -23,11 +23,12 @@
       text-align: center;
       font-size: var(--font-size-small);
       font-weight: var(--font-weight-600);
-      background-color: var(--deep-color);
+      background-color: var(--base-color);
+      border-radius: var(--border-radius-small);
     }
 
     &:hover {
-      box-shadow: 0 0 0 1px var(--deep-force-color);
+      box-shadow: 0 0 0 1px var(--border-force-color);
     }
   }
 

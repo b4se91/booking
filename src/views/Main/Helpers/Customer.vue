@@ -1,8 +1,8 @@
 <template>
-  <div id="ui--main-customer" class="app-main-container">
+  <div class="ui--container">
     <div id="ui--h2-title">Customer Info</div>
 
-    <div class="ui--container ui--col-x2">
+    <div class="ui--col ui--col-x2">
       <Input
         name="ui--model-customer-name"
         type="text"
@@ -18,7 +18,7 @@
       />
     </div>
 
-    <div class="ui--container ui--col-x1">
+    <div class="ui--col ui--col-x1">
       <Select
         name="ui--model-customer-hotel"
         label="Customer Hotel"
@@ -29,7 +29,7 @@
       />
     </div>
 
-    <div class="ui--container ui--col-x2">
+    <div class="ui--col ui--col-x2">
       <Input
         name="ui--model-room-number"
         type="text"
@@ -43,7 +43,7 @@
       />
     </div>
 
-    <div class="ui--container ui--col-x1">
+    <div class="ui--col ui--col-x1">
       <Input
         type="textarea"
         name="ui--model-special-request"
@@ -59,7 +59,7 @@
 import { Vue, Component } from 'vue-property-decorator'
 
 @Component
-export default class CustomerInfo extends Vue {
+export default class Customer extends Vue {
   // DATA
   private customerHotel: number = 0
   private specialRequest: string = String()

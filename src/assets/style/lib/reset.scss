@@ -28,7 +28,7 @@ time, mark, audio, video {
 
 ::selection {
   color: var(--light-color);
-  background-color: var(--primary-color);
+  background-color: var(--info-color);
   text-shadow: 0 0 0 transparent;
 }
 
@@ -39,8 +39,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-y: scroll;
   color: var(--dark-text-color);
-  // background-color: var(--base-color);
-  background-color: #F7F7F8;
+  background-color: var(--base-color);
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -62,6 +61,16 @@ img,
 label {
   width: inherit;
   user-select: none;
+}
+
+img {
+  &[aria-object-fit="cover"] {
+    object-fit: cover;
+  }
+
+  &[aria-object-position="center"] {
+    object-position: center;
+  }
 }
 
 input {

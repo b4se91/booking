@@ -1,7 +1,7 @@
 <template>
-  <div id="ui--date-picker">
+  <div class="ui--date-picker">
 
-    <label id="ui--date-picker-label" :class="{ required }">
+    <label :class="['ui--date-picker-label', { required }]">
       <span>{{ label }}</span>
     </label>
 
@@ -43,6 +43,6 @@ export default class DatePicker extends Vue {
   @Prop({ type: String, required: true }) readonly name!: string
 
   // DATA
-  private currentValue: string = this.value || '2019-04-27'
+  private currentValue: string = this.value
 }
 </script>

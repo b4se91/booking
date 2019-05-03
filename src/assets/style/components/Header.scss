@@ -12,8 +12,8 @@
   align-items: center;
   justify-content: center;
 
-  border-bottom: solid 1px var(--border-color);
   background-color: var(--text-color);
+  border-bottom: solid 1px var(--border-color);
 
   &-actions {
     display: grid;

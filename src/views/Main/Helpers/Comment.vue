@@ -1,21 +1,29 @@
 <template>
-  <div id="app-comment">
+  <div class="ui--comment">
     <div id="app-above">Reservation Comment</div>
     
-    <div id="app-comment-msg" v-if="store.length">
-      <div class="ui--comment-msg" v-for="i in store" :key="i">
-        <p>TC by Pierce. Paid by Online Payment VISA MC. RQ TB to BTS Phromphong</p>
-        
+    <div class="ui--comment-msg" v-if="store.length">
+      <div class="ui--comment-list" v-for="(elm, key) in store" :key="key">
         <div class="ui--comment-owner">
-          <span class="ui--comment-owner-name">namae</span>
-          <span class="ui--comment-owner-date">
-            {{ $m().format('LLL') }}
-          </span>
+          <img
+            class="ui--comment-owner-profile"
+            :src="require('@/assets/image/default.jpg')"
+          >
+          
+          <div class="ui--comment-owner-name">
+            {{ 'Rahul Goradia' }}
+          </div>
+          
+          <div class="ui--comment-owner-date">
+            {{ $m('2019-05-02 08:08:00').fromNow() }}
+          </div>
         </div>
+
+        <p>TC by Pierce. Paid by Online Payment VISA MC. RQ TB to BTS Phromphong</p>
       </div>
     </div>
 
-    <div id="app-comment-input">
+    <div class="ui--comment-input">
       <textarea
         v-model="comment"
         class="ui--comment-area"

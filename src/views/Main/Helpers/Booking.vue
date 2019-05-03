@@ -1,8 +1,8 @@
 <template>
-  <div id="ui--main-booking" class="app-main-container">
+  <div class="ui--container">
     <div id="ui--h2-title">Booking Info</div>
 
-    <div class="ui--container ui--col-x2">
+    <div class="ui--col ui--col-x2">
 
       <Select
         name="ui--model-branch"
@@ -13,17 +13,19 @@
         search required
       />
 
-      <Number
+      <Select
         name="ui--model-people"
         label="People"
         v-model="people"
-        :max="30"
+        :options="arr"
+        :field="{ key: 'id', label: 'id' }"
         required
       />
 
       <DatePicker
         name="ui--model-appointment-date"
         label="Appointment Date"
+        v-model="appointmentDate"
         required
       />
 
@@ -52,7 +54,6 @@
       />
 
     </div>
-
   </div>
 </template>
 
@@ -60,16 +61,23 @@
 import { Vue, Component } from 'vue-property-decorator'
 
 @Component
-export default class BookingInfo extends Vue {
+export default class Booking extends Vue {
   // DATA
-  private people: number = 1
+  private people: number = 0
   private branch: number = 0
   private totalHours: number = 0
   private appointmentTime: number = 0
+  private appointmentDate: string = this.$m().format('YYYY-MM-DD')
 
   // COMPUTED
   private get db (): any {
     return this.$store.getters['APP.COMMENT/data']
+  }
+
+  private get arr (): any {
+    let results: any = []
+    for (let i = 1; i <= 30; i++) results.push({ id: i })
+    return results
   }
 }
 </script>

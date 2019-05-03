@@ -1,8 +1,8 @@
 <template>
-  <div id="ui--main-madeby" class="app-main-container">
+  <div class="ui--container">
     <div id="ui--h2-title">Booking Made By</div>
 
-    <div class="ui--container ui--col-x2">
+    <div class="ui--col ui--col-x2">
       <Input
         type="text"
         name="ui--model-bp-name"
@@ -16,7 +16,7 @@
       />
     </div>
 
-    <div class="ui--container ui--col-x2">
+    <div class="ui--col ui--col-x2">
       <Select
         name="ui--model-channel"
         label="Channel"
@@ -33,7 +33,7 @@
       />
     </div>
 
-    <div class="ui--container ui--col-x1">
+    <div class="ui--col ui--col-x1">
       <Select
         name="ui--model-booking-made-by"
         label="Booking Made By"
@@ -44,7 +44,7 @@
       />
     </div>
 
-    <div class="ui--container ui--col-x1">
+    <div class="ui--col ui--col-x1">
       <Select
         name="ui--model-marketing-code"
         label="Marketing Code"
@@ -62,7 +62,7 @@
 import { Vue, Component } from 'vue-property-decorator'
 
 @Component
-export default class MadeBy extends Vue {
+export default class Madeby extends Vue {
   // DATA
   private channel: number = 0
   private madeBy: number = 0

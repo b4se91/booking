@@ -1,12 +1,20 @@
 // State
 export const state: any = {
-  loaded: false
+  load: false,
+  modal: {
+    open: false,
+    comp: null
+  }
 }
 
 // Getters
 export const getters: any = {
   loaded (state: any): boolean {
-    return state.loaded
+    return state.load
+  },
+
+  modal (state: any): any {
+    return state.modal
   }
 }
 
@@ -14,6 +22,13 @@ export const getters: any = {
 export const mutations: any = {
   LOADED (state: any, payload: boolean): void {
     state.load = payload
+  },
+
+  VMODAL (state: any, payload: any): void {
+    state.modal = {
+      open: payload.open,
+      comp: payload.comp || null
+    }
   }
 }
 
@@ -23,10 +38,13 @@ export const actions: any = {
    * Event Listener loading component
    */
   L04D ({ commit }: any, params: boolean): void {
-    if (params) {
-      commit('LOADED', params)
-    } else {
-      setTimeout(() => { commit('LOADED', params) }, 256)
-    }
+    commit('LOADED', params)
+  },
+
+  /**
+   * Event Listener modal component
+   */
+  M0D4L ({ commit }: any, params: any): void {
+    commit('VMODAL', params)
   }
 }

@@ -1,7 +1,4 @@
 :root {
-  // Prefix
-  --image                  : "../../assets/image";
-
   // Color
   --primary-color          : #1854CC;
   --info-color             : #2D8CF0;
@@ -12,21 +9,24 @@
   --link-color             : #FF5722;
   --rate-star-color        : #F5A623;
   --dark-color             : #111418;
+  --dark-force-color       : #AEB6BF;
   --light-color            : #FBFCFC;
   --deep-color             : #EEF0F1;
   --deep-force-color       : #D0D7DC;
   --border-color           : #E2E6E9;
+  --border-force-color     : #90CAF9;
   --dark-text-color        : #566573;
 
   // Base
   // --font-family            : "Avenir", Helvetica, Arial, sans-serif;
   --font-family            : -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   --code-family            : Consolas, Menlo, Courier, monospace;
-  --base-color             : #F9F9FA;
+  --base-color             : #F2F4F8;
   --text-color             : #FFF;
   --font-size-strong       : 20px;
   --font-size-base         : 14px;
   --font-size-small        : 12px;
+  --font-size-x35          : 35px;
   --font-size-x24          : 24px;
   --font-size-x18          : 18px;
   --font-size-x16          : 16px;
@@ -65,7 +65,7 @@
   // Animation
   --animation-time         : 200ms;
   --transition-time        : 100ms;
-  --cubic-bezier           : "cubic-bezier(0.77, 0, 0.175, 1)";
+  --cubic-bezier           : cubic-bezier(0.77, 0, 0.175, 1);
 
   // Breakpoints
   --phone                  : "only screen and (max-width: 460px)";

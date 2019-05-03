@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "label": "E-mail"
+  },
+  {
+    "id": 2,
+    "label": "Voucher"
+  },
+  {
+    "id": 3,
+    "label": "Passport/ID Card"
+  },
+  {
+    "id": 4,
+    "label": "Misc"
+  },
+  {
+    "id": 5,
+    "label": "Pay-in Slip"
+  }
+]

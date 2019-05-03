@@ -1,7 +1,7 @@
 <template>
-  <div id="ui--input">
+  <div class="ui--input">
 
-    <label :for="name" :class="{ required }">
+    <label :for="name" :class="['ui--input-label', { required }]">
       <i v-if="icon" :class="`ion-${icon}`"></i>
       <span>{{ label }}</span>
     </label>

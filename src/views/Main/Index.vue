@@ -1,28 +1,18 @@
 <template>
   <div id="app-main">
 
-    <div id="app-main-left">
-      <div class="container">
+    <div class="ui--main-left">
+      <div class="ui--main-container-sticky">
 
-        <div id="app-main-menu">
-          <a href="./" class="ui--link-li">
-            <i class="ion-ios-apps"></i>
-            <span>Log</span>
-          </a>
-
-          <a href="./" class="ui--link-li">
-            <i class="ion-ios-bulb"></i>
-            <span>Quick Search</span>
-          </a>
-
-          <a href="./" class="ui--link-li">
-            <i class="ion-ios-clipboard"></i>
-            <span>Copy to New Booking</span>
-          </a>
-
-          <a href="./" class="ui--link-li">
-            <i class="ion-ios-close-circle"></i>
-            <span>Cancel Booking</span>
+        <div class="ui--main-menu">
+          <a
+            class="ui--main-menu-link"
+            v-for="(elm, key) in menu"
+            :key="key"
+            :href="elm.href">
+            
+            <i :class="`ion-${elm.icon}`"></i>
+            <span>{{ elm.label }}</span>
           </a>
         </div>
 
@@ -31,7 +21,7 @@
       </div>
     </div>
 
-    <div id="app-main-center">
+    <div class="ui--main-center">
       <Booking />
       <Customer />
       <MadeBy />
@@ -39,12 +29,12 @@
       <Reservation />
     </div>
 
-    <div id="app-main-right">
-      <div class="container">
+    <div class="ui--main-right">
+      <div class="ui--main-container-sticky">
         <Comment />
 
-        <div id="app-main-latest">
-          <div class="ui--test">
+        <div class="ui--main-record">
+          <div class="ui--main-record-list">
             <h4>
               <i class="ion-ios-person"></i>
               <span>Reservation by:&nbsp;</span>
@@ -53,7 +43,7 @@
             <h5>{{ $m().format('LLL') }}</h5>
           </div>
 
-          <div class="ui--test">
+          <div class="ui--main-record-list">
             <h4>
               <i class="ion-ios-alarm"></i>
               <span>Last Update by:&nbsp;</span>
@@ -64,34 +54,44 @@
         </div>
       </div>
     </div>
-
+    
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import Comment from './Helpers/Comment.vue'
-import Files from './Helpers/Files.vue'
-import Customer from './Helpers/Customer.vue'
 import Booking from './Helpers/Booking.vue'
+import Comment from './Helpers/Comment.vue'
+import Customer from './Helpers/Customer.vue'
+import Files from './Helpers/Files.vue'
 import MadeBy from './Helpers/MadeBy.vue'
-import Transport from './Helpers/Transport.vue'
 import Reservation from './Helpers/Reservation.vue'
+import Transport from './Helpers/Transport.vue'
+import Form from '@/form'
 import './style.scss'
 
 @Component({
   components: {
-    Comment,
-    Files,
-    Customer,
-    Booking,
-    MadeBy,
-    Transport,
-    Reservation
+    Booking , Comment,
+    Customer, Files,
+    MadeBy,   Reservation,
+    Transport
   }
 })
 
 export default class Main extends Vue {
-  // code.
+  // DATA
+  private form: any = new Form({
+  })
+
+  // COMPUTED
+  private get menu (): any {
+    return [
+      { href: './', icon: 'ios-apps', label: 'Log' },
+      { href: './', icon: 'ios-bulb', label: 'Quick Search' },
+      { href: './', icon: 'ios-clipboard', label: 'Copy to New Booking' },
+      { href: './', icon: 'ios-close-circle', label: 'Cancel Booking' }
+    ]
+  }
 }
 </script>

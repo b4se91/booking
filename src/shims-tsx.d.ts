@@ -19,7 +19,7 @@ declare global {
     get     (p: string, v: any): Array<T>
   }
 
-  interface Window {
+  interface window {
     [elem: string]: any,
   }
 }

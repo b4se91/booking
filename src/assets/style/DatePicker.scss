@@ -1,4 +1,4 @@
-#ui--date-picker {
+.ui--date-picker {
   position: relative;
 
   & > #DateTimePicker {
@@ -14,14 +14,22 @@
     border: unset !important;
 
     font-size: var(--font-size-small);
-    font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-600);
 
     color: var(--dark-color);
-    background-color: var(--deep-color);
+    background-color: var(--base-color);
+    border-radius: var(--border-radius-small);
+
+    transition-duration: unset !important;
+
+    &:focus,
+    &:hover {
+      box-shadow: 0 0 0 1px var(--border-force-color);
+    }
   }
 
   div.datepicker {
-    border-radius: 0;
-    box-shadow: 0 10px 20px var(--border-color);
+    border-radius: 0 !important;
+    box-shadow: 0 10px 20px var(--border-color) !important;
   }
 }
