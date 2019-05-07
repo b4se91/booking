@@ -134,6 +134,13 @@
       </div>
     </div>
 
+    <div class="ui--block" v-if="pick.use || take.use">
+      <Button class="ui--color-info" @click.native="print">
+        <i class="ion-ios-print"></i>
+        <span>print</span>
+      </Button>
+    </div>
+
   </div>
 </template>
 
@@ -156,6 +163,11 @@ export default class Transport extends Vue {
   private take: any = {
     use: false,
     driver: 0
+  }
+
+  // METHODS
+  private print (): void {
+    // code.
   }
 
   // COMPUTED

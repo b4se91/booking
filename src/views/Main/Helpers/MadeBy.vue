@@ -9,11 +9,15 @@
         label="B.P. Name"
       />
 
-      <Input
-        type="text"
-        name="ui--model-bp-phone"
-        label="B.P. Phone"
-      />
+      <div class="ui--col ui--col-cog">
+        <Input
+          type="text"
+          name="ui--model-bp-phone"
+          label="B.P. Phone"
+        />
+        
+        <div class="ui--cog ion-ios-book" title="Search" @click="test"></div>
+      </div>
     </div>
 
     <div class="ui--col ui--col-x2">
@@ -44,7 +48,7 @@
       />
     </div>
 
-    <div class="ui--col ui--col-x1">
+    <div class="ui--col ui--col-x1 ui--col-cog">
       <Select
         name="ui--model-marketing-code"
         label="Marketing Code"
@@ -53,6 +57,8 @@
         :field="{ key: 'id', label: 'label' }"
         search
       />
+      
+      <div class="ui--cog ion-ios-book" title="Search" @click="test"></div>
     </div>
 
   </div>
@@ -67,6 +73,11 @@ export default class Madeby extends Vue {
   private channel: number = 0
   private madeBy: number = 0
   private marketingCode: number = 0
+
+  // METHODS
+  private test (): void {
+    alert('developing')
+  }
 
   // COMPUTED
   private get db (): any {

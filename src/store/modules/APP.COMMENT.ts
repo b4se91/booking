@@ -1,8 +1,8 @@
-import axios from 'axios'
+// import axios from 'axios'
 
 // State
 export const state: any = {
-  data: []
+  data: require('../comment.json')
 }
 
 // Getters

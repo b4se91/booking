@@ -73,11 +73,6 @@ export default class Comment extends Vue {
     this.template = 0
   }
 
-  // CREATED
-  public created (): void {
-    this.$store.dispatch('APP.COMMENT/run')
-  }
-
   // COMPUTED
   private get db (): any {
     return this.$store.getters['APP.COMMENT/data']

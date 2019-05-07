@@ -3,7 +3,8 @@ export const state: any = {
   load: false,
   modal: {
     open: false,
-    comp: null
+    comp: null,
+    title: 'modal title'
   }
 }
 
@@ -25,10 +26,7 @@ export const mutations: any = {
   },
 
   VMODAL (state: any, payload: any): void {
-    state.modal = {
-      open: payload.open,
-      comp: payload.comp || null
-    }
+    state.modal = payload
   }
 }
 

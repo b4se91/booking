@@ -9,7 +9,20 @@
   border-radius: var(--border-radius-small);
   border-bottom: solid 3px hsla(0, 0%, 100%, 0.3);
 
+  i { margin-right: 5px }
+
   &.ui--color {
+
+    &-light {
+      color: var(--dark-color);
+      border-color: transparent;
+      background-color: transparent;
+    }
+
+    &-dark {
+      color: var(--light-color);
+      background-color: var(--dark-text-color);
+    }
 
     &-default {
       color: var(--dark-color);

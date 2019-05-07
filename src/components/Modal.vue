@@ -1,15 +1,21 @@
 <template>
-  <transition name="ui--modal">
+  <transition name="ui--modal" appear>
     <div id="app-modal">
 
-      <div class="ui--modal-overlay"></div>
+      <div class="ui--modal-overlay" @click="overlayClose"></div>
 
-      <div class="ui--modal-container">
+      <div class="ui--modal-container" :style="{ width: modal.width }">
 
-        <div
-          class="ui--modal-close ion-ios-arrow-round-back"
-          title="Close"
-          @click="close">
+        <div class="ui--modal-header">
+          <div
+            class="ui--modal-close ion-ios-arrow-round-back"
+            title="Close"
+            @click="close">
+          </div>
+
+          <div class="ui--modal-header-title">
+            {{ modal.title }}
+          </div>
         </div>
 
         <component :is="modal.comp"></component>
@@ -28,16 +34,19 @@ import { Modal } from '@/units'
 export default class VModal extends Vue {
   // METHODS
   private close (): void {
-    Modal(this, null, false)
+    Modal(this, { close: true })
+  }
+
+  private overlayClose (): void {
+    if (this.modal.clickable) this.close()
   }
 
   private closeOver (param: boolean): void {
-    document.body.style.overflowY     = param ? 'hidden' : 'scroll'
-    document.body.style.paddingRight  = param ? '17px' : '0px'
+    // document.body.style.overflowY = (param ? 'hidden' : 'scroll')
   }
 
   // COMPUTED
-  private get modal (): boolean {
+  private get modal (): any {
     return this.$store.getters['APP.DEMO/modal']
   }
 

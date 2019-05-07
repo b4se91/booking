@@ -5,6 +5,20 @@
     margin: 2px 0 0;
   }
 
+  &-label {
+    text-transform: capitalize;
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-normal);
+
+    i { margin-right: 4px }
+    &.required {
+      &::after {
+        content: ' *';
+        color: var(--error-color);
+      }
+    }
+  }
+
   input.field-input {
     padding: 6px;
     height: 28px;

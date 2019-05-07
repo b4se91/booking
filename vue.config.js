@@ -7,5 +7,11 @@ module.exports = {
     moment: {
       locales: ['en-us']
     }
+  },
+
+  runtimeCompiler: true,
+
+  css: {
+    sourceMap: true
   }
 }

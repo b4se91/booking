@@ -16,46 +16,70 @@
 
     &-container {
       position: relative;
-      width: 55vw;
+      width: 50vw;
       height: 100%;
+      padding: 0 40px;
       margin: 0 0 0 auto;
-      padding: 70px 40px 40px;
       background-color: var(--text-color);
+    }
+
+    &-header {
+      min-height: 70px;
+
+      &-title {
+        margin-left: 50px;
+        font-size: 20px;
+        font-weight: 100;
+        line-height: 50px;
+        text-transform: uppercase;
+        color: var(--info-color);
+      }
     }
 
     &-close {
       position: absolute;
-      z-index: 10;
-      top: 0;
-      left: 0;
-  
-      text-align: center;
       cursor: pointer;
-  
-      width: 60px;
+      width: 50px;
       font-size: 40px;
       line-height: 50px;
+      &:hover { color: var(--error-color) }
+    }
+  }
 
-      transition: all 200ms ease;
+  /*
+   * The following styles are auto-applied to elements with
+   * transition="modal" when their visibility is toggled
+   * by Vue.js.
+   *
+   * You can easily play with the modal transition by editing
+   * these styles.
+   */
+  &.ui--modal {
+    &-enter-active,
+    &-leave-active {
+      transition: all .4s ease;
 
-      &:hover {
-        width: 55px;
-        color: var(--error-color);
-        text-shadow: 2px 0 4px rgba(#FF4D4D, .5);
+      .ui--modal-container { transition: all .2s }
+    }
+
+    &-enter-to,
+    &-leave {
+      opacity: 1;
+    }
+
+    &-enter {
+      opacity: 0;
+
+      .ui--modal-container {
+        transform: translateX(20px)
       }
     }
 
-    /*
-     * The following styles are auto-applied to elements with
-     * transition="modal" when their visibility is toggled
-     * by Vue.js.
-     *
-     * You can easily play with the modal transition by editing
-     * these styles.
-     */
-    &-leave-active {
+    &-leave-to {
+      opacity: 0;
+
       .ui--modal-container {
-        transform: translateX(17px);
+        transform: translateX(-20px)
       }
     }
   }

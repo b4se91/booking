@@ -10,12 +10,16 @@
         required
       />
 
-      <Input
-        name="ui--model-memner-code"
-        type="text"
-        label="Member Code"
-        :maxlength="6"
-      />
+      <div class="ui--col ui--col-cog">
+        <Input
+          name="ui--model-member-code"
+          type="text"
+          label="Member Code"
+          :maxlength="6"
+        />
+        
+        <div class="ui--cog ion-ios-book" title="Search" @click="VMember"></div>
+      </div>
     </div>
 
     <div class="ui--col ui--col-x1">
@@ -35,12 +39,16 @@
         type="text"
         label="Room Number"
       />
-
-      <Input
-        name="ui--model-phone-number"
-        type="text"
-        label="Phone Number"
-      />
+      
+      <div class="ui--col ui--col-cog">
+        <Input
+          name="ui--model-phone-number"
+          type="text"
+          label="Phone Number"
+        />
+        
+        <div class="ui--cog ion-ios-book" title="Search" @click="test"></div>
+      </div>
     </div>
 
     <div class="ui--col ui--col-x1">
@@ -57,12 +65,29 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import { Modal } from '@/units'
 
 @Component
 export default class Customer extends Vue {
   // DATA
   private customerHotel: number = 0
   private specialRequest: string = String()
+
+  // METHODS
+  private test (): void {
+    alert('developing')
+  }
+
+  private async VMember () {
+    const comp: any = await import('@/components/iMod/Membership.vue')
+    Modal(this, {
+      comp: comp.default,
+      options: {
+        title: 'membership',
+        clickable: true
+      }
+    })
+  }
 
   // COMPUTED
   private get db (): any {

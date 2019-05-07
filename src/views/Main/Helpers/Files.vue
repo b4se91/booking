@@ -17,7 +17,7 @@
         </div>
       </div>
 
-      <div class="ui--files-li ui--files-upload" v-if="4 <= store.length" @click="upload">
+      <div class="ui--files-li ui--files-upload" v-if="4 <= store.length" @click="VUpload">
         <i class="ion-ios-cloud-upload"></i>
       </div>
 
@@ -33,11 +33,15 @@ import { Modal } from '@/units'
 export default class Files extends Vue {
   
   // METHODS
-  private upload (): void {
-    import(/* webpackChunkName: "upload-files" */ '@/components/Mod/Upload.vue')
-      .then((component: any) => {
-        Modal(this, component.default)
-      })
+  private async VUpload () {
+    const comp: any = await import('@/components/iMod/Upload.vue')
+    Modal(this, {
+      comp: comp.default,
+      options: {
+        title: 'uoload files',
+        clickable: true
+      }
+    })
   }
 
   // COMPUTED

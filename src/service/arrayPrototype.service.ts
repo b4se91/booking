@@ -2,9 +2,6 @@ import { isNumber } from '@/utils'
 import { upperCase } from '@/units'
 
 export default function Install () {
-  window.Log = function (input: any): void {
-    console.log(input)
-  }
 
   /**
    * @param {String} prop

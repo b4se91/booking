@@ -9,13 +9,13 @@
   --link-color             : #FF5722;
   --rate-star-color        : #F5A623;
   --dark-color             : #111418;
+  --dark-text-color        : #566573;
   --dark-force-color       : #AEB6BF;
   --light-color            : #FBFCFC;
   --deep-color             : #EEF0F1;
   --deep-force-color       : #D0D7DC;
   --border-color           : #E2E6E9;
   --border-force-color     : #90CAF9;
-  --dark-text-color        : #566573;
 
   // Base
   // --font-family            : "Avenir", Helvetica, Arial, sans-serif;
@@ -44,23 +44,15 @@
   // Media queries breakpoints
   // Extra small screen / phone
   --screen-xs              : 480px;
-  --screen-xs-min          : var(--screen-xs);
-  --screen-xs-max          : (var(--screen-xs-min) - 1);
 
   // Small screen / tablet
   --screen-sm              : 768px;
-  --screen-sm-min          : var(--screen-sm);
-  --screen-sm-max          : (var(--screen-sm-min) - 1);
 
   // Medium screen / desktop
   --screen-md              : 992px;
-  --screen-md-min          : var(--screen-md);
-  --screen-md-max          : (var(--screen-md-min) - 1);
 
   // Large screen / wide desktop
   --screen-lg              : 1200px;
-  --screen-lg-min          : var(--screen-lg);
-  --screen-lg-max          : (var(--screen-lg-min) - 1);
 
   // Animation
   --animation-time         : 200ms;

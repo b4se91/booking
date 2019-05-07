@@ -13,14 +13,18 @@
         search required
       />
 
-      <Select
-        name="ui--model-people"
-        label="People"
-        v-model="people"
-        :options="arr"
-        :field="{ key: 'id', label: 'id' }"
-        required
-      />
+      <div class="ui--col ui--col-cog">
+        <Select
+          name="ui--model-people"
+          label="People"
+          v-model="people"
+          :options="arr"
+          :field="{ key: 'id', label: 'id' }"
+          required
+        />
+        
+        <div class="ui--cog ion-ios-construct" title="Treatment Information" @click="VPeople"></div>
+      </div>
 
       <DatePicker
         name="ui--model-appointment-date"
@@ -59,15 +63,28 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import { Modal } from '@/units'
 
 @Component
 export default class Booking extends Vue {
   // DATA
-  private people: number = 0
+  private people: number = 1
   private branch: number = 0
   private totalHours: number = 0
   private appointmentTime: number = 0
-  private appointmentDate: string = this.$m().format('YYYY-MM-DD')
+  private appointmentDate: string = '2019-06-06'
+
+  // METHODS
+  private async VPeople () {
+    const comp: any = await import('@/components/iMod/People.vue')
+    Modal(this, {
+      comp: comp.default,
+      options: {
+        width: '60vw',
+        title: 'treatment information'
+      }
+    })
+  }
 
   // COMPUTED
   private get db (): any {

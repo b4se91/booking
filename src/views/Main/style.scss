@@ -19,6 +19,33 @@
 
       &-x1 { grid-template-columns: repeat(1, 1fr) }
       &-x2 { grid-template-columns: repeat(2, 1fr) }
+
+      &-cog {
+        margin: 0;
+        grid-column-gap: 6px;
+        grid-template-columns: 1fr 30px;
+        align-items: flex-end;
+
+        &.ui--col-x1 {
+          margin: 10px 0 0;
+        }
+      }
+    }
+
+    .ui--cog {
+      cursor: pointer;
+
+      text-align: center;
+      font-size: var(--font-size-x18);
+      line-height: 28px;
+
+      border-radius: var(--border-radius-small);
+      background-color: var(--base-color);
+
+      &:hover {
+        color: var(--light-color);
+        background-color: var(--info-color);
+      }
     }
   }
 

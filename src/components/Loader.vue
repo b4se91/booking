@@ -1,5 +1,5 @@
 <template>
-  <transition name="loader">
+  <transition name="loader" appear>
     <div id="app-loader">
       
       <div class="container">

@@ -1,0 +1,71 @@
+.ui--membership {
+  position: relative;
+
+  &-filter {
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: 50% repeat(2, 1fr);
+    padding: 0 0 15px;
+  }
+
+  &-container {
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+  }
+
+  .ui--table {
+    display: table;
+    width: 100%;
+    
+    &-col {
+      display: table-cell;
+      vertical-align: top;
+      padding: 10px;
+      border-bottom: solid 1px var(--base-color);
+    }
+
+    &-row {
+      position: relative;
+      overflow: hidden;
+      display: table-row;
+
+      &:hover {
+        background-color: var(--light-color);
+
+        .ui--table-actions {
+          opacity: 1;
+          transform: translate(0, 0);
+        }
+      }
+
+      &-index {
+        font-size: var(--font-size-base);
+        font-weight: var(--font-weight-600);
+
+        &.stat-err {
+          color: var(--error-color);
+          text-decoration: line-through;
+        }
+      }
+
+      &-sub {
+        color: var(--dark-force-color);
+        font-size: var(--font-size-small);
+        font-weight: var(--font-weight-light);
+      }
+    }
+
+    &-actions {
+      position: absolute;
+      right: 0;
+      padding: 18px 0 10px 10px;
+      background-color: var(--light-color);
+
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all .2s;
+
+      button { margin-left: 5px }
+    }
+  }
+}
