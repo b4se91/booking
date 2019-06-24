@@ -80,23 +80,11 @@ import { Load } from '@/units'
 
 @Component
 export default class VUploadFiles extends Vue {
-  // DATA
+  // __DATA
   private temporary: any = null
   private render: any = null
 
-  // CREATED
-  public created (): void {
-    window.addEventListener("paste", (event: any): void => {
-      const x: any = (event.clipboardData || event.originalEvent.clipboardData).items[0]
-      if (undefined !== x && x.kind === 'file') {
-        const file: any = x.getAsFile()
-        this.fileRender(file)
-        this.temporary = file
-      }
-    }, false)
-  }
-
-  // METHODS
+  // __METHODS
   private fileChange (events: any): void {
     const x: any = (events.dataTransfer || events.target).files[0]
 
@@ -178,13 +166,25 @@ export default class VUploadFiles extends Vue {
     events.preventDefault()
   }
 
-  // COMPUTED
+  // __COMPUTED
   private get store (): any {
     return Array(4)
   }
 
   private get db (): any {
     return this.$store.getters['APP.UPLOAD/data']
+  }
+
+  // @Created (Lifecycle Hooks)
+  private created (): void {
+    window.addEventListener("paste", (event: any): void => {
+      const x: any = (event.clipboardData || event.originalEvent.clipboardData).items[0]
+      if (undefined !== x && x.kind === 'file') {
+        const file: any = x.getAsFile()
+        this.fileRender(file)
+        this.temporary = file
+      }
+    }, false)
   }
 }
 </script>

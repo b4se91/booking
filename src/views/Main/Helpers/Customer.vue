@@ -1,5 +1,5 @@
 <template>
-  <div class="ui--container">
+  <div v-if="state" class="ui--container">
     <div id="ui--h2-title">Customer Info</div>
 
     <div class="ui--col ui--col-x2">
@@ -7,6 +7,7 @@
         name="ui--model-customer-name"
         type="text"
         label="Customer Name"
+        v-model="customerName"
         required
       />
 
@@ -15,6 +16,7 @@
           name="ui--model-member-code"
           type="text"
           label="Member Code"
+          v-model="memberCode"
           :maxlength="6"
         />
         
@@ -38,6 +40,7 @@
         name="ui--model-room-number"
         type="text"
         label="Room Number"
+        v-model="roomNumber"
       />
       
       <div class="ui--col ui--col-cog">
@@ -45,6 +48,7 @@
           name="ui--model-phone-number"
           type="text"
           label="Phone Number"
+          v-model="customerPhone"
         />
         
         <div class="ui--cog ion-ios-book" title="Search" @click="test"></div>
@@ -70,10 +74,18 @@ import { Modal } from '@/units'
 @Component
 export default class Customer extends Vue {
   // DATA
+  private customerName: string = ''
+  private customerPhone: string = ''
   private customerHotel: number = 0
-  private specialRequest: string = String()
+  private memberCode: string = ''
+  private roomNumber: string = ''
+  private specialRequest: string = ''
 
   // METHODS
+  public sync (): object {
+    return this.$data as object
+  }
+
   private test (): void {
     alert('developing')
   }
@@ -91,7 +103,15 @@ export default class Customer extends Vue {
 
   // COMPUTED
   private get db (): any {
-    return this.$store.getters['APP.COMMENT/data']
+    return this.$store.getters['APP.UPLOAD/data']
+  }
+
+  private get state (): boolean {
+    const state: any = this.$store.getters['APP.MAIN/data']
+    for (const key in this.$data) {
+      this.$data[key] = state[key]
+    }
+    return true
   }
 }
 </script>

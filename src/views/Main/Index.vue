@@ -5,7 +5,7 @@
       <div class="ui--main-container-sticky">
 
         <div class="ui--main-menu">
-          <a
+          <div
             class="ui--main-menu-link"
             v-for="(elm, key) in menu"
             :key="key"
@@ -13,7 +13,7 @@
             
             <i :class="`ion-${elm.icon}`"></i>
             <span>{{ elm.label }}</span>
-          </a>
+          </div>
         </div>
 
         <Files />
@@ -22,11 +22,11 @@
     </div>
 
     <div class="ui--main-center">
-      <Booking />
-      <Customer />
-      <MadeBy />
-      <Transport />
-      <Reservation />
+      <Booking ref="md-1" />
+      <Customer ref="md-2" />
+      <BookingMadeBy ref="md-3" />
+      <Transport ref="md-4" />
+      <Reservation ref="md-5" />
     </div>
 
     <div class="ui--main-right">
@@ -60,29 +60,41 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import Booking from './Helpers/Booking.vue'
-import Comment from './Helpers/Comment.vue'
-import Customer from './Helpers/Customer.vue'
-import Files from './Helpers/Files.vue'
-import MadeBy from './Helpers/MadeBy.vue'
-import Reservation from './Helpers/Reservation.vue'
-import Transport from './Helpers/Transport.vue'
-import Form from '@/form'
+import { hasOwnProp } from '@/utils'
 import './style.scss'
 
+// ImportAll **.vue
+const components: any = {}
+const port: any = require.context('./Helpers', true, /.*\.vue$/)
+port.keys().map((file: string): any => {
+  components[file.replace(/(^.\/)|(\.vue$)/g, '')] = port(file).default
+})
+
 @Component({
-  components: {
-    Booking , Comment,
-    Customer, Files,
-    MadeBy,   Reservation,
-    Transport
-  }
+  components
 })
 
 export default class Main extends Vue {
   // DATA
-  private form: any = new Form({
-  })
+  private timer: number | undefined = undefined
+
+  // METHODS
+  private sync (): void {
+    const refs: any = this.$refs
+    const data: any = {}
+
+    for (const ref of Object.keys(refs)) {
+      const md: any = refs[ref]
+      if (hasOwnProp(md, 'sync')) {
+        const state: any = md.sync()
+        for (const key in state) {
+          data[key] = state[key]
+        }
+      }
+    }
+
+    this.$store.commit('APP.MAIN/SET', data)
+  }
 
   // COMPUTED
   private get menu (): any {
@@ -92,6 +104,16 @@ export default class Main extends Vue {
       { href: './', icon: 'ios-clipboard', label: 'Copy to New Booking' },
       { href: './', icon: 'ios-close-circle', label: 'Cancel Booking' }
     ]
+  }
+
+  // @Mounted (Lifecycle Hooks)
+  private mounted (): void {
+    // this.timer = setInterval(this.sync, 512)
+  }
+
+  // @Destroyed (Lifecycle Hooks)
+  private destroyed (): void {
+    clearInterval(this.timer)
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="ui--container ui--comp-transport">
+  <div v-if="state" class="ui--container ui--comp-transport">
     <div id="ui--h2-title">Transportation</div>
 
     <!-- PICK UP -->
@@ -8,21 +8,21 @@
         <span>Pick Up</span>
         <Switzh
           name="ui--model-transport-pickup"
-          v-model="pick.use"
+          v-model="transportPick.use"
           :labels="sw.label"
           :color="sw.color"
         />
       </div>
 
-      <div class="ui--body" v-if="pick.use">
+      <div class="ui--body" v-if="transportPick.use">
         <div class="ui--col ui--col-x1">
           <Select
             name="ui--model-pick-driver"
             label="Driver"
-            v-model="pick.driver"
+            v-model="transportPick.driver"
             :options="db"
             :field="{ key: 'id', label: 'label' }"
-            :toTop="!take.use && !pick.driver" search
+            :toTop="!transportTake.use && !transportPick.driver" search
           />
         </div>
 
@@ -31,38 +31,43 @@
             type="text"
             name="ui--model-pick-place"
             label="Place (N/A: Customer Hotel)"
+            v-model="transportPick.place"
           />
 
           <Select
             name="ui--model-pick-time"
             label="Time (Auto)"
+            v-model="transportPick.time"
             :options="db"
             :field="{ key: 'id', label: 'label' }"
-            :toTop="!take.use && !pick.driver" search
+            :toTop="!transportTake.use && !transportPick.driver" search
           />
         </div>
 
-        <div class="ui--col ui--col-x2" v-if="pick.driver">
+        <div class="ui--col ui--col-x2" v-if="transportPick.driver">
           <Input
             type="text"
             name="ui--model-pick-taxi-price"
             label="Taxi Price"
+            v-model="transportPick.taxiPrice"
           />
 
           <Input
             type="text"
             name="ui--model-pick-taxi-license"
             label="Taxi License Plate"
+            v-model="transportPick.taxiLicense"
           />
         </div>
 
-        <div class="ui--col ui--col-x1" v-if="pick.driver">
+        <div class="ui--col ui--col-x1" v-if="transportPick.driver">
           <Select
             name="ui--model-pick-taxi-reason"
             label="Taxi Reason"
+            v-model="transportPick.taxiReason"
             :options="db"
             :field="{ key: 'id', label: 'label' }"
-            :toTop="!take.use" search
+            :toTop="!transportTake.use" search
           />
         </div>
       </div>
@@ -74,18 +79,18 @@
         <span>Take Back</span>
         <Switzh
           name="ui--model-transport-takeback"
-          v-model="take.use"
+          v-model="transportTake.use"
           :labels="sw.label"
           :color="sw.color"
         />
       </div>
 
-      <div class="ui--body" v-if="take.use">
+      <div class="ui--body" v-if="transportTake.use">
         <div class="ui--col ui--col-x1">
           <Select
             name="ui--model-take-driver"
             label="Driver"
-            v-model="take.driver"
+            v-model="transportTake.driver"
             :options="db"
             :field="{ key: 'id', label: 'label' }"
             search toTop
@@ -97,35 +102,40 @@
             type="text"
             name="ui--model-take-place"
             label="Place (N/A: Customer Hotel)"
+            v-model="transportTake.place"
           />
 
           <Select
             name="ui--model-take-time"
             label="Time (Auto)"
+            v-model="transportTake.time"
             :options="db"
             :field="{ key: 'id', label: 'label' }"
             search toTop
           />
         </div>
 
-        <div class="ui--col ui--col-x2" v-if="take.driver">
+        <div class="ui--col ui--col-x2" v-if="transportTake.driver">
           <Input
             type="text"
             name="ui--model-take-taxi-price"
             label="Taxi Price"
+            v-model="transportTake.taxiPrice"
           />
 
           <Input
             type="text"
             name="ui--model-take-taxi-license"
             label="Taxi License Plate"
+            v-model="transportTake.taxiLicense"
           />
         </div>
 
-        <div class="ui--col ui--col-x1" v-if="take.driver">
+        <div class="ui--col ui--col-x1" v-if="transportTake.driver">
           <Select
             name="ui--model-take-taxi-reason"
             label="Taxi Reason"
+            v-model="transportTake.taxiReason"
             :options="db"
             :field="{ key: 'id', label: 'label' }"
             search toTop
@@ -134,8 +144,8 @@
       </div>
     </div>
 
-    <div class="ui--block" v-if="pick.use || take.use">
-      <Button class="ui--color-info" @click.native="print">
+    <div class="ui--block" v-if="transportPick.use || transportTake.use">
+      <Button class="ui--color-primary" @click.native="print">
         <i class="ion-ios-print"></i>
         <span>print</span>
       </Button>
@@ -156,23 +166,37 @@ import { ToggleButton as Switzh } from 'vue-js-toggle-button'
 
 export default class Transport extends Vue {
   // DATA
-  private pick: any = {
+  private transportPick: object = {
     use: false,
-    driver: 0
+    driver: 0,
+    time: 0,
+    place: '',
+    taxiPrice: '',
+    taxiLicense: '',
+    taxiReason: ''
   }
-  private take: any = {
+  private transportTake: object = {
     use: false,
-    driver: 0
+    driver: 0,
+    time: 0,
+    place: '',
+    taxiPrice: '',
+    taxiLicense: '',
+    taxiReason: ''
   }
 
   // METHODS
+  public sync (): object {
+    return this.$data as object
+  }
+
   private print (): void {
     // code.
   }
 
   // COMPUTED
   private get db (): any {
-    return this.$store.getters['APP.COMMENT/data']
+    return this.$store.getters['APP.UPLOAD/data']
   }
 
   private get sw (): any {
@@ -180,6 +204,14 @@ export default class Transport extends Vue {
       label: { checked: 'On', unchecked: 'Off' },
       color: { checked: '#2D8CF0', unchecked: '#E2E6E9', disabled: '#EEF0F1' }
     }
+  }
+
+  private get state (): boolean {
+    const state: any = this.$store.getters['APP.MAIN/data']
+    for (const key in this.$data) {
+      this.$data[key] = state[key] as object
+    }
+    return true
   }
 }
 </script>

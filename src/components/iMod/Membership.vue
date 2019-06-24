@@ -6,6 +6,7 @@
         name="ui--model-search"
         type="text"
         label="Search"
+        v-model="search"
       />
 
       <Select
@@ -27,18 +28,29 @@
 
       <div class="ui--table-row" v-for="(elm, key) in 10" :key="key">
         <div class="ui--table-col">
-          <div class="ui--table-row-index">00000</div>
+          <div class="ui--table-row-index"
+            v-html="h('00000')">
+          </div>
+
           <div class="ui--table-row-sub">#Princess</div>
         </div>
 
         <div class="ui--table-col">
-          <div class="ui--table-row-index">Rahul Goradia</div>
+          <div class="ui--table-row-index"
+            v-html="h('Rahul Goradia')">
+          </div>
+
           <div class="ui--table-row-sub">Female</div>
         </div>
 
         <div class="ui--table-col">
-          <div class="ui--table-row-index">email@sample.com</div>
-          <div class="ui--table-row-sub">000 000 0000</div>
+          <div class="ui--table-row-index"
+            v-html="h('email@sample.com')">
+          </div>
+
+          <div class="ui--table-row-sub"
+            v-html="h('000 000 0000')">
+          </div>
         </div>
 
         <div class="ui--table-col">
@@ -63,7 +75,7 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { Load } from '@/units'
+import { Load, hls } from '@/units'
 import Pages from '@/components/Pages.vue'
 import '@/assets/style/components/Membership.scss'
 
@@ -74,27 +86,37 @@ import '@/assets/style/components/Membership.scss'
 })
 
 export default class VMembership extends Vue {
-  // DATA
+  // __DATA
   private currentPage: number = 1
+  private search: string = this.memberCode
 
-  // CREATED
-  public created (): void {
-    Load(this)
-  }
-
-  // MOUNTED
-  public mounted (): void {
-    Load(this, false)
-  }
-
-  // METHODS
+  // __METHODS
   private apply (param: any): void {
     // code.
   }
 
-  // COMPUTED
+  private h (input: string): string {
+    return hls(input, this.search)
+  }
+
+  // __COMPUTED
   private get db (): void {
     return this.$store.getters['APP.UPLOAD/data']
+  }
+
+  private get memberCode (): string {
+    const { memberCode }: any = this.$store.getters['APP.MAIN/data']
+    return memberCode
+  }
+
+  // @Created (Lifecycle Hooks)
+  private created (): void {
+    // Load(this)
+  }
+
+  // @Mounted (Lifecycle Hooks)
+  private mounted (): void {
+    // Load(this, false)
   }
 }
 </script>

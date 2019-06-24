@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Prop, Component } from 'vue-property-decorator'
+import { Vue, Prop, Watch, Component } from 'vue-property-decorator'
 import CtkPicker from 'vue-ctk-date-time-picker'
 import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css'
 
@@ -42,7 +42,18 @@ export default class DatePicker extends Vue {
   @Prop(Boolean) readonly required!: boolean
   @Prop({ type: String, required: true }) readonly name!: string
 
-  // DATA
-  private currentValue: string = this.value
+  // __DATA
+  private currentValue: string = this.value || '2020-01-01'
+
+  // __WATCH
+  @Watch('value')
+  private onValue (value: string): void {
+    this.currentValue = value
+  }
+
+  @Watch('currentValue')
+  private onEmit (value: string): void {
+    this.$emit('input', value)
+  }
 }
 </script>

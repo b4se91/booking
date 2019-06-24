@@ -10,8 +10,7 @@
       v-if="type === 'textarea'"
       v-model.trim="currentValue"
       :id="name"
-      class="ui--input-textarea"
-      @keypress="emitValve">
+      class="ui--input-textarea">
     </textarea>
 
     <input
@@ -21,8 +20,7 @@
       :maxlength="maxlength"
       v-model.trim="currentValue"
       autocomplete="off"
-      class="ui--input-default"
-      @keypress="emitValve">
+      class="ui--input-default">
 
   </div>
 </template>
@@ -40,11 +38,17 @@ export default class Input extends Vue {
   @Prop(Number) readonly maxlength!: number
   @Prop(Boolean) readonly required!: boolean
 
-  // DATA
-  private currentValue: string = this.value || String()
+  // __DATA
+  private currentValue: string = this.value || ''
 
-  // METHODS
-  private emitValve (value: any): void {
+  // __WATCH
+  @Watch('value')
+  private onValue (value: any): void {
+    this.currentValue = value
+  }
+
+  @Watch('currentValue')
+  private onEmit (value: any): void {
     this.$emit('input', this.currentValue)
   }
 }

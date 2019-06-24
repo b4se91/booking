@@ -29,7 +29,7 @@ for (const key in components) Vue.component(key, components[key])
 // Instanced Config
 Vue.prototype.$m = Moment
 Vue.config.productionTip = false
-Vue.config.devtools = process.env.NODE_ENV !== 'production'
+Vue.config.devtools = (process.env.NODE_ENV !== 'production')
 
 // Vue Instance
 new Vue({

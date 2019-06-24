@@ -10,7 +10,7 @@
         {{ placeholder }}
       </span>
 
-      <i class="ion-ios-close" v-if="currentValue" @click="clear"></i>
+      <i class="ion-ios-close" v-if="currentValue && btnClear" @click="clear"></i>
       <i class="ion-ios-arrow-down" v-else  @click="openDropdown"></i>
     </div>
 
@@ -38,12 +38,13 @@ import { hls, lowerCase } from '@/units'
 
 @Component
 export default class Select extends Vue {
-  @Prop(Number) value!: number
+  @Prop([Number, String]) value!: number | string
   @Prop(String) readonly label!: string
   @Prop(Boolean) readonly search!: boolean
   @Prop(Boolean) readonly disabled!: boolean
   @Prop(Boolean) readonly required!: boolean
   @Prop(Boolean) readonly toTop!: boolean
+  @Prop(Boolean) readonly btnClear!: boolean
   @Prop({ type: String, required: true }) readonly name!: string
   @Prop({ type: Array, required: true }) readonly options!: any
   @Prop({ type: Object, required: true }) readonly field!: any
@@ -109,20 +110,25 @@ export default class Select extends Vue {
   }
 
   // WATCH
+  @Watch('value')
+  private onValue (value: number): void {
+    this.currentValue = value
+  }
+
   @Watch('open')
-  closeDropdown (newValue: boolean): void {
-    if (!newValue) {
+  private closeDropdown (value: boolean): void {
+    if (!value) {
       this.query = String()
     }
   }
 
-  // __MOUNTED
-  public mounted (): void {
+  // @Mounted (Lifecycle Hooks)
+  private mounted (): void {
     document.addEventListener('click', this.outSideClose, false)
   }
 
-  // __DESTROYED
-  public destroyed (): void {
+  // @Destroyed (Lifecycle Hooks)
+  private destroyed (): void {
     document.removeEventListener('click', this.outSideClose, false)
   }
 }

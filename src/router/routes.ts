@@ -9,5 +9,11 @@ export default [
     path: '/sales',
     name: 'sales',
     component: () => import(/* webpackChunkName: "err404" */ '@/views/404/Index.vue')
+  },
+
+  {
+    path: '/treatment',
+    name: 'treatment',
+    component: () => import(/* webpackChunkName: "err404" */ '@/views/404/Index.vue')
   }
 ]

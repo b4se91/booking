@@ -14,6 +14,7 @@
 
     <div id="app-header-menu">
       <router-link class="ui--h-menu" :to="{ name: 'main' }">customer info</router-link>
+      <router-link class="ui--h-menu" :to="{ name: 'treatment' }">Treatment info</router-link>
       <router-link class="ui--h-menu" :to="{ name: 'sales' }">sales receipt</router-link>
     </div>
 
@@ -25,6 +26,8 @@ import { Vue, Component } from 'vue-property-decorator'
 
 @Component
 export default class Header extends Vue {
-  // code.
+  constructor () {
+    super()
+  }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="ui--container">
+  <div v-if="state" class="ui--container">
     <div id="ui--h2-title">Booking Info</div>
 
     <div class="ui--col ui--col-x2">
@@ -13,18 +13,14 @@
         search required
       />
 
-      <div class="ui--col ui--col-cog">
-        <Select
-          name="ui--model-people"
-          label="People"
-          v-model="people"
-          :options="arr"
-          :field="{ key: 'id', label: 'id' }"
-          required
-        />
-        
-        <div class="ui--cog ion-ios-construct" title="Treatment Information" @click="VPeople"></div>
-      </div>
+      <Select
+        name="ui--model-people"
+        label="People"
+        v-model="people"
+        :options="arr"
+        :field="{ key: 'id', label: 'id' }"
+        required
+      />
 
       <DatePicker
         name="ui--model-appointment-date"
@@ -51,11 +47,16 @@
         search required
       />
 
-      <Input
-        name="ui--model-refer-booking"
-        type="text"
-        label="Refer to Booking ID"
-      />
+      <div class="ui--col ui--col-cog">
+        <Input
+          name="ui--model-refer-booking"
+          type="text"
+          label="Refer to Booking ID"
+          v-model="referId"
+        />
+        
+        <div class="ui--cog ion-ios-book" title="search" @click="test"></div>
+      </div>
 
     </div>
   </div>
@@ -68,33 +69,39 @@ import { Modal } from '@/units'
 @Component
 export default class Booking extends Vue {
   // DATA
-  private people: number = 1
   private branch: number = 0
+  private people: number = 1
+  private referId: string = ''
   private totalHours: number = 0
   private appointmentTime: number = 0
-  private appointmentDate: string = '2019-06-06'
+  private appointmentDate: string = String('2019-05-06')
 
   // METHODS
-  private async VPeople () {
-    const comp: any = await import('@/components/iMod/People.vue')
-    Modal(this, {
-      comp: comp.default,
-      options: {
-        width: '60vw',
-        title: 'treatment information'
-      }
-    })
+  public sync (): object {
+    return this.$data as object
+  }
+  
+  private test (): void {
+    alert('developing')
   }
 
   // COMPUTED
   private get db (): any {
-    return this.$store.getters['APP.COMMENT/data']
+    return this.$store.getters['APP.UPLOAD/data']
   }
 
   private get arr (): any {
     let results: any = []
     for (let i = 1; i <= 30; i++) results.push({ id: i })
     return results
+  }
+
+  private get state (): boolean {
+    const state: any = this.$store.getters['APP.MAIN/data']
+    for (const key in this.$data) {
+      this.$data[key] = state[key]
+    }
+    return true
   }
 }
 </script>

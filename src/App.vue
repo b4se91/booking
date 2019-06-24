@@ -5,7 +5,7 @@
 
     <router-view />
 
-    <VModal v-if="modal.open" />
+    <VModal v-if="modal" />
 
     <Loader v-if="loaded" />
 
@@ -32,7 +32,7 @@ export default class Application extends Vue {
   }
 
   private get modal (): boolean {
-    return this.$store.getters['APP.DEMO/modal']
+    return this.$store.getters['APP.DEMO/modal']['open']
   }
 }
 </script>

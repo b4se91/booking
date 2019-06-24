@@ -1,5 +1,5 @@
 <template>
-  <div class="ui--container">
+  <div v-if="state" class="ui--container">
     <div id="ui--h2-title">Booking Made By</div>
 
     <div class="ui--col ui--col-x2">
@@ -7,6 +7,7 @@
         type="text"
         name="ui--model-bp-name"
         label="B.P. Name"
+        v-model="madeName"
       />
 
       <div class="ui--col ui--col-cog">
@@ -14,6 +15,7 @@
           type="text"
           name="ui--model-bp-phone"
           label="B.P. Phone"
+          v-model="madePhone"
         />
         
         <div class="ui--cog ion-ios-book" title="Search" @click="test"></div>
@@ -34,6 +36,7 @@
         type="text"
         name="ui--model-voucher"
         label="Voucher No."
+        v-model="voucherNo"
       />
     </div>
 
@@ -41,7 +44,7 @@
       <Select
         name="ui--model-booking-made-by"
         label="Booking Made By"
-        v-model="madeBy"
+        v-model="madeCompany"
         :options="db"
         :field="{ key: 'id', label: 'label' }"
         search required
@@ -68,20 +71,35 @@
 import { Vue, Component } from 'vue-property-decorator'
 
 @Component
-export default class Madeby extends Vue {
+export default class BookingMadeBy extends Vue {
   // DATA
+  private madeName: string = ''
+  private madePhone: string = ''
   private channel: number = 0
-  private madeBy: number = 0
+  private voucherNo: string = ''
+  private madeCompany: number = 0
   private marketingCode: number = 0
 
   // METHODS
+  public sync (): object {
+    return this.$data as object
+  }
+  
   private test (): void {
     alert('developing')
   }
 
   // COMPUTED
   private get db (): any {
-    return this.$store.getters['APP.COMMENT/data']
+    return this.$store.getters['APP.UPLOAD/data']
+  }
+
+  private get state (): boolean {
+    const state: any = this.$store.getters['APP.MAIN/data']
+    for (const key in this.$data) {
+      this.$data[key] = state[key]
+    }
+    return true
   }
 }
 </script>

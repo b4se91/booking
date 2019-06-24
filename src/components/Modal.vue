@@ -32,7 +32,7 @@ import { Modal } from '@/units'
 
 @Component
 export default class VModal extends Vue {
-  // METHODS
+  // __METHODS
   private close (): void {
     Modal(this, { close: true })
   }
@@ -41,23 +41,9 @@ export default class VModal extends Vue {
     if (this.modal.clickable) this.close()
   }
 
-  private closeOver (param: boolean): void {
-    // document.body.style.overflowY = (param ? 'hidden' : 'scroll')
-  }
-
-  // COMPUTED
+  // __COMPUTED
   private get modal (): any {
     return this.$store.getters['APP.DEMO/modal']
-  }
-
-  // MOUNTED
-  public mounted (): void {
-    this.closeOver(true)
-  }
-
-  // DESTROYED
-  public destroyed (): void {
-    this.closeOver(false)
   }
 }
 </script>

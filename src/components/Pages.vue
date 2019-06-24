@@ -40,15 +40,12 @@ import { Vue, Prop, Watch, Component } from 'vue-property-decorator'
 @Component
 export default class Pages extends Vue {
   @Prop(Number) value!: any
-  @Prop({
-    type: Number,
-    required: true
-  }) readonly maxlength!: number
+  @Prop({ type: Number, required: true }) readonly maxlength!: number
 
-  // DATA
+  // __DATA
   private currentValue: number = this.value || 1
 
-  // METHODS
+  // __METHODS
   private page (input: number): void {
     this.currentValue = input as number
   }
@@ -65,7 +62,7 @@ export default class Pages extends Vue {
     }
   }
 
-  // WATCH
+  // __WATCH
   @Watch ('currentValue')
   onEmit (value: number): void {
     this.$emit('input', value)

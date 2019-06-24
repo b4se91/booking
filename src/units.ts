@@ -155,9 +155,14 @@ function load (Vue: any, input: boolean = true): void {
  * Manage VModal constructor.
  * 
  * @param {VueInstance} Vue
- * @param {Object} params
+ * @param {VModalParams} params
  */
-function modal (Vue: any, params: any = {}): void {
+  interface VModalParams {
+    options?: object
+    comp?: any
+    close?: boolean
+  }
+function modal (Vue: any, params: VModalParams): void {
   const vuex: any = Vue.$store
   vuex.dispatch('APP.DEMO/M0D4L', {
     ...params.options,
